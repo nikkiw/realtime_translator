@@ -2,9 +2,11 @@
 
 A real-time speech-to-text and translation tool with a live terminal interface.
 
+> **Built on top of the excellent [`KoljaB/RealtimeSTT`](https://github.com/KoljaB/RealtimeSTT) library.**
+
 ## Features
 
-- Real-time speech recognition from microphone
+- Real-time speech recognition from microphone (with available input device listing)
 - Asynchronous translation using [deep-translator](https://github.com/nidhaloff/deep-translator) (Google Translate)
 - Live updating table in the terminal using [rich](https://github.com/Textualize/rich)
 - Device selection and device listing via command line
