@@ -1,36 +1,58 @@
-# Создание окружения 
-Для создания окружения `online_speech_translate` на базе **Python 3.12** с помощью **conda** используй следующую команду:
+# Online Speech Translator
+
+A real-time speech-to-text and translation tool with a live terminal interface.
+
+## Features
+
+- Real-time speech recognition from microphone
+- Asynchronous translation simulation (can be replaced with real translation API)
+- Live updating table in the terminal using [rich](https://github.com/Textualize/rich)
+- Device selection and device listing via command line
+
+## Quickstart
+
+### 1. Create a Conda Environment
 
 ```bash
 conda create -n online_speech_translate python=3.12
+conda activate online_speech_translate
 ```
 
-### 🔹 **Объяснение команды:**
-- `conda create` — команда для создания нового окружения.
-- `-n online_speech_translate` — имя окружения (`online_speech_translate`).
-- `python=3.12` — версия Python, которая будет установлена в окружении.
-
-После создания окружения его можно активировать командой:
-
-```bash
-conda activate online_speech_translate
-```  
-
-Чтобы установить зависимости, перечисленные в **`requirements.txt`**, выполни следующую команду в терминале:
+### 2. Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-Установка nexa sdk:
-```bash
-conda create -n nexasdk python=3.10
-conda activate nexasdk
-export CPLUS_INCLUDE_PATH=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1
-export CMAKE_ARGS="-DCMAKE_VERBOSE_MAKEFILE=ON \
-                   -DGGML_METAL=ON \
-                   -DLLAMA_BUILD_EXAMPLES=OFF"
-				   				   
-pip install -vv . --prefer-binary --no-cache-dir   --config-settings=build-dir="build/llama_build"
+### 3. List Available Audio Devices
 
+```bash
+python realtime_stt.py --list_devices
 ```
+
+### 4. Run the Application
+
+```bash
+python realtime_stt.py --input_device_index 0
+```
+
+Replace `0` with the index of your preferred input device (see device list).
+
+## Command Line Arguments
+
+- `--input_device_index`: Index of the input audio device (default: 0)
+- `--list_devices`: Print available audio devices and exit
+
+## Requirements
+
+- Python 3.12
+- See `requirements.txt` for Python dependencies
+
+## Example
+
+
+## License
+
+MIT License
+
+---

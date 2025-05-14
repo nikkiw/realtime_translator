@@ -175,3 +175,7 @@ cython_debug/
 
 # VS Code settings
 .vscode/
+
+# Current project settings
+realtimesst.log
+changes_for_llm.txt
