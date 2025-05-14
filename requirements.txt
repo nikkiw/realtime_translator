@@ -1,14 +1,5 @@
 RealtimeSTT
 sounddevice
-# numpy==1.26.4
-# silero-vad
-# whisperflow
-# openai-whisper 
-# faster-whisper
-# sounddevice 
-# soundfile 
-# scipy 
-# torch
-# python-dotenv
-# pyaudio
-# websocket-client
+rich
+deep-translator
+numpy<2
