@@ -179,3 +179,4 @@ cython_debug/
 # Current project settings
 realtimesst.log
 changes_for_llm.txt
+*.log

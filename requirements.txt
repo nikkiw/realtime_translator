@@ -3,3 +3,7 @@ sounddevice
 rich
 deep-translator
 numpy<2
+openai
+concurrent
+pytest
+pytest-cov
