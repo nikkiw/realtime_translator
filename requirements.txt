@@ -7,3 +7,5 @@ openai
 concurrent
 pytest
 pytest-cov
+fastapi
+uvicorn

@@ -21,9 +21,10 @@ class OpenAITranslator(BaseTranslator):
         
         # Compose the prompt for the OpenAI model, including context if available
         prompt = (
-            f"You are translating an interview about software engineering technologies. "
-            f"Translate from {self.source} to {self.target}."
+            f"You are a translator. The input is a transcription of speech from an online recording. "
+            f"Translate the text from {self.source} to {self.target}, and output only the translated text without any additional commentary or formatting."
         )
+
         
         if context:
             # If context is provided, include it in the prompt for better translation quality

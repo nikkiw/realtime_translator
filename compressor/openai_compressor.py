@@ -102,6 +102,7 @@ class OpenAICompressor(BaseCompressor):
             prompt = (
                 "Please produce a concise summary of the following conversation, "
                 "presenting only the core storyline first, then adding supporting details. "
+                "The input is a transcription of speech from an online recording. "
                 "Retain all main themes and key points, and make the summary approximately "
                 "one quarter of the original length:\n\n"
                 f"{text_to_compress}"

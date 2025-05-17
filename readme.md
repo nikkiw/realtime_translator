@@ -15,27 +15,35 @@ A real-time speech-to-text and translation tool with a live terminal interface.
 - Support for multiple languages
 - Logging of transcripts and translations (see `app.log`, `transcript.log`, `transcript_with_translation.log`)
 - Context management for improved translation accuracy
+- Modular translation and rendering backends (see `translator/` and `renderer/`)
 
 ## Project Structure
 
 ```
-├── realtime_stt.py              # Main logic for real-time speech translation
-├── translator/                  # Translation interfaces and implementations
+├── realtime_stt.py                  # Main logic for real-time speech translation
+├── input_devices.py                 # Audio device utilities
+├── translator/                      # Translation interfaces and implementations
 │   ├── __init__.py
 │   ├── base.py
 │   ├── factory.py
 │   ├── google_translator.py
 │   └── openai_translator.py
-├── compressor/                  # Context compressor for OpenAI
+├── compressor/                      # Context compressor for OpenAI
 │   ├── __init__.py
 │   ├── base.py
 │   └── openai_compressor.py
-├── requirements.txt             # Project dependencies
-├── readme.md                    # Documentation
-├── app.log                      # Application log
-├── transcript.log               # Raw transcript log
-├── transcript_with_translation.log # Transcript with translation log
-└── LICENSE                      # License file
+├── renderer/                        # Output rendering (terminal, HTML, etc.)
+│   ├── __init__.py
+│   ├── base.py
+│   ├── factory.py
+│   ├── html_fastaip_renderer.py
+│   └── rich_render.py
+├── requirements.txt                 # Project dependencies
+├── readme.md                        # Documentation
+├── app.log                          # Application log
+├── transcript.log                   # Raw transcript log
+├── transcript_with_translation.log  # Transcript with translation log
+├── LICENSE                          # License file
 ```
 
 ## Quickstart
@@ -64,8 +72,7 @@ Before installing dependencies, run:
 
 ```bash
 sudo apt-get update
-sudo apt-get install python3-dev
-sudo apt-get install portaudio19-dev
+sudo apt-get install python3-dev portaudio19-dev
 ```
 
 #### MacOS Installation
@@ -106,14 +113,22 @@ python realtime_stt.py --input_device_index <device_index> --input_lang <source_
 - `--proxy`: Optional proxy URL for translation requests.
 - `--translator_type`: Type of translator to use ('google' or 'openai').
 - `--openai_api_key`: OpenAI API key for using the OpenAI translator.
+- `--renderer`: Output rendering engine. Options:
+    - `rich`: Shows a live-updating, color table in the terminal (recommended for CLI use).
+    - `html_fastaip`: Outputs results to an HTML page (convenient for web integration or browser viewing, url: http://127.0.0.1:8090).
 - `--log_level`: Logging level (default: INFO).
 - `--list_devices`: List available audio devices and exit.
 
-#### Example with Proxy
+#### Example with Proxy and HTML Renderer
 
 ```bash
-python realtime_stt.py --input_device_index 0 --input_lang en --translate_lang ru --proxy http://user:pass@host:port
+python realtime_stt.py --input_device_index 0 --input_lang en --translate_lang ru --renderer html_fastaip --proxy http://user:pass@host:port
 ```
+
+### Renderer Options
+
+- **rich**: Displays results in a modern, colorized table directly in your terminal. Supports live updates and is ideal for command-line workflows.
+- **html_fastaip**: Renders results to an HTML file for viewing in a browser or embedding in web apps. Useful for sharing or integrating with other tools.
 
 ## Requirements
 
